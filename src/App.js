@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TodoBanner } from "./TodoBanner";
 import { TodoCreator } from "./TodoCreator";
 import { TodoRow } from "./TodoRow";
+import { VisibilityControl } from "./VisibilityControl";
 
 
 export default class App extends Component {
@@ -14,7 +15,8 @@ export default class App extends Component {
                 { action: "Wysłać wiadomosć", done: false},
                 { action: "Telefon do klienta", done: true},
                 { action: "Spotkanie na sali głównej", done: false}
-            ]
+            ],
+            showCompleted: true
         }
     }
 
@@ -36,20 +38,43 @@ export default class App extends Component {
                 ? { ...item, done: !item.done } : item)
     });
 
-    todoTableRows = () => this.state.todoItems.map(item =>
-        <TodoRow key={item.action} item={item} callback={this.toggleTodo} />)
+    todoTableRows = (doneValue) => this.state.todoItems
+        .filter(item => item.done === doneValue).map(item =>
+            <TodoRow key={item.action} item={item}
+                     callback={this.toggleTodo} />)
 
     render = () =>
         <div>
-            <TodoBanner name={this.state.userName} tasks={this.state.todoItems} />
+            <TodoBanner name={this.state.userName} tasks={this.state.todoItems}/>
             <div className="container-fluid">
-                <TodoCreator callback={this.createNewTodo} />
+                <TodoCreator callback={this.createNewTodo}/>
                 <table className="table table-striped table-bordered">
                     <thead>
-                        <tr><th>Opis</th><th>Wykonane</th></tr>
+                    <tr>
+                        <th>Opis</th>
+                        <th>Wykonane</th>
+                    </tr>
                     </thead>
-                    <tbody>{ this.todoTableRows() }</tbody>
+                    <tbody>{this.todoTableRows(false)}</tbody>
                 </table>
+                <div className="bg-secondary text-white text-center p-2">
+                    <VisibilityControl description="wykonane zadania"
+                                       isChecked={this.state.showCompleted}
+                                       callback={(checked) =>
+                                           this.setState({showCompleted: checked})}/>
+                </div>
+
+                {this.state.showCompleted &&
+                <table className="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Opis</th>
+                        <th>Wykonane</th>
+                    </tr>
+                    </thead>
+                    <tbody>{this.todoTableRows(true)}</tbody>
+                </table>
+                }
             </div>
         </div>
 }
