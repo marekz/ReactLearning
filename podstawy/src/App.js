@@ -4,7 +4,6 @@ export default class App extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             count: 5
         }
@@ -23,13 +22,22 @@ export default class App extends Component {
     handleClick = () => this.setState({ count: this.state.count + 1 });
 
     render = () =>
-        <h4 className={this.getClassName(this.state.count)}>
-            <button className="btn btn-info m-2" onClick={this.handleClick}>
-                Kliknij mnie
-            </button><br />
-            Liczba przedmiotów jest { this.isEven(this.state.count) }<br />
-            Liczba przedmiotów wynosi { this.state.count }
-
-        </h4>
-
+        <div className="container-fluid p-4">
+            <div className="row bg-info text-white p-2">
+                <div className="col font-weight-bold">Wartość</div>
+                <div className="col-6 font-weight-bold">Parzysta</div>
+            </div>
+            <div className="row bg-light p-2 border">
+                <div className="col">{ this.state.count }</div>
+                <div className="col-6">{ this.isEven(this.state.count) }</div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <button className="btn btn-info m-2"
+                            onClick={this.handleClick}>
+                        Kliknij mnie
+                    </button>
+                </div>
+            </div>
+        </div>
 }
