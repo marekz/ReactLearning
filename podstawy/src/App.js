@@ -6,7 +6,7 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            count: 4
+            count: 5
         }
     }
 
@@ -14,9 +14,15 @@ export default class App extends Component {
         return val % 2 === 0 ? "parzysta" : "nieparzysta";
     }
 
+    getClassName(val) {
+        return val % 2 === 0
+            ? "bg-primary text-white text-ceter p-2 m-1"
+            : "bg-secondary text-white text-ceter p-2 m-1"
+    }
+
     render = () =>
-        <p className="bg-primary text-white text-center p-2 m-1">
-            Liczba przedniotów jest { this.isEven(this.state.count) }
+        <p className={ this.getClassName(this.state.count) }>
+            Liczba przedmiotów jest { this.isEven(this.state.count) }
         </p>
 
 }
