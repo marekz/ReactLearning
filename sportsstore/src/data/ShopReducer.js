@@ -5,7 +5,8 @@ export const ShopReducer = (storeData, action) => {
         case ActionTypes.DATA_LOAD:
             return {
                 ...storeData,
-                [action.payload.dataType]: action.payload.data
+                [action.payload.dataType]: action.payload.data,
+                [`${action.payload.dataType}_params`]: action.payload.params
             };
         default:
             return storeData || {};
