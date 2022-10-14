@@ -21,7 +21,7 @@ export class DataGetter extends Component {
         }
 
         if (Object.keys(rtData).find(key => dsData[key] !== rtData[key])) {
-            this.props.loadData(DataTypes.PRODUCTS, rtData);s
+            this.props.loadData(DataTypes.PRODUCTS, rtData);
         }
     }
 }
