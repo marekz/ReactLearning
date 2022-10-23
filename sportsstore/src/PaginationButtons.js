@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 
 export class PaginationButtons extends Component {
-    getPageNumber = () => {
+    getPageNumbers = () => {
         if (this.props.pageCount < 4) {
             return [...Array(this.props.pageCount + 1).keys()].slice(1);
         } else if (this.props.currentPage <= 4) {
@@ -34,7 +34,7 @@ export class PaginationButtons extends Component {
                     <span className="h4">...</span>
                 </React.Fragment>
             }
-            {this.getPageNumber().map(num =>
+            {this.getPageNumbers().map(num =>
                 <button className={`btn mx-1 ${num === current 
                 ? "btn-primary" : "btn-secondary"}`}
                         onClick={() => navigate(num)} key={num}>
