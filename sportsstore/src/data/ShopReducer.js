@@ -1,4 +1,4 @@
-import { ActionTypes } from "./Types";
+import { ActionTypes, DataTypes } from "./Types";
 
 export const ShopReducer = (storeData, action) => {
     switch(action.type) {
@@ -6,6 +6,7 @@ export const ShopReducer = (storeData, action) => {
             return {
                 ...storeData,
                 [action.payload.dataType]: action.payload.data,
+                [`${action.payload.dataType}_total`]: action.payload.total,
                 [`${action.payload.dataType}_params`]: action.payload.params
             };
         case ActionTypes.DATA_SET_PAGESIZE:

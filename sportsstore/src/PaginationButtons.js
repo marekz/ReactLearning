@@ -42,7 +42,7 @@ export class PaginationButtons extends Component {
                 </button>)}
             {current <= (pageCount - 4) &&
                 <React.Fragment>
-                    <span className="4">...</span>
+                    <span className="h4">...</span>
                     <button className="btn btn-secondary mx-1"
                             onClick={() => navigate(pageCount)}>
                         {pageCount}

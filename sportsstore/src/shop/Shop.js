@@ -1,13 +1,17 @@
 import React, { Component } from "react";
-import { CategoryNavigation} from "./CategoryNavigation";
+import { CategoryNavigation } from "./CategoryNavigation";
 import { ProductList } from "./ProductList";
-import { CartSummary} from "./CartSummary";
+import { CartSummary } from "./CartSummary";
+import { ProductPageConnector } from "./ProductPageConnector";
+import { PaginationControls } from "../PaginationControls";
+
+const ProductPages = ProductPageConnector(PaginationControls);
 
 export class Shop extends Component {
 
     handleAddToCart = (...args) => {
         this.props.addToCart(...args);
-        this.props.history.push("/shop.cart");
+        this.props.history.push("/shop/cart");
     }
 
     render() {
@@ -24,8 +28,9 @@ export class Shop extends Component {
                                         categories={this.props.categories} />
                 </div>
                 <div className="col-9 p-2">
+                    <ProductPages />
                     <ProductList products={this.props.products}
-                                 addToCart={ this.props.addToCart } />
+                                 addToCart={ this.handleAddToCart } />
                 </div>
             </div>
         </div>

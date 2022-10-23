@@ -30,7 +30,7 @@ export const ShopConnector = connect(mapStateToProps, mapDispatchToProps) (
                        } />
                 <Route path="/shop/cart" render={(routeProps) =>
                     <CartDetails {...this.props} {...routeProps} /> } />
-                <Redirect to="/shop/products/all/1" />
+                <Redirect to="/shop/products/wszystkie/1" />
             </Switch>
         }
 

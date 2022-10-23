@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { DataTypes } from "./Types";
+import { DataTypes } from "../data/Types";
 
 export class DataGetter extends Component {
     render() {
@@ -12,10 +12,11 @@ export class DataGetter extends Component {
     componentDidMount = () => this.getData();
 
     getData = () => {
-        const dsData = this.props.products_param || {};
+        const dsData = this.props.products_params || {} ;
         const rtData = {
             _limit: this.props.pageSize || 5,
-            _sort: this.props.sortKey || 1,
+            _sort: this.props.sortKey || "name",
+            _page: this.props.match.params.page || 1,
             category_like: (this.props.match.params.category || "") === "wszystkie"
                 ? "" : this.props.match.params.category
         }
