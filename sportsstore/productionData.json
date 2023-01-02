@@ -29,7 +29,7 @@
         { "id": 9, "name": "Błyszczący król", "category": "Szachy",
             "description": "Pozłacany, wysadzany diamentami król", "price": 3999
         }
-        ],
+    ],
     "categories": ["Sporty wodne", "Piłka nożna", "Szachy"],
     "orders": []
 }
