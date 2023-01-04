@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function App() {
-  return "Witaj Adminie!";
+  return <h1 className="bg-primary text-white text-center p-2">Witaj Adminie!</h1>
 }
