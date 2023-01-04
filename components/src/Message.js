@@ -1,7 +1,7 @@
 import React from "react";
 
-export function Message() {
+export function Message(props) {
     return <h4 className="bg-success text-white text-center p-2">
-        TO jest komunikat!
+        {props.graeting}, {props.name} !
     </h4>
 }
