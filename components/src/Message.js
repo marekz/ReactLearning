@@ -1,12 +1,10 @@
 import React from "react";
 
 export function Message(props) {
-    if (props.name === "Jacku") {
-        return <h4 className="bg-warning p-2">
-            {props.graeting}, {props.name} !
-        </h4>
-    }
-    return <h4 className="bg-success text-white text-center p-2">
+    let classes = props.name === "Jacku" ? "bg-warning p-2"
+        : "bg-success text-white text-center p-2";
+
+    return <h4 className={ classes }>
         {props.graeting}, {props.name} !
     </h4>
 }
