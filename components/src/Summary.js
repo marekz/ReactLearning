@@ -1,16 +1,11 @@
 import React from "react";
 
 function createInnerElement(names) {
-    let arrayElement = [];
-    for (let i = 0; i < names.length; i++ ) {
-        arrayElement.push(
-            <div>
-                {`"${names[i]}" składs się z ${names[i].length} znaków`}
-            </div>
-        )
-    }
-
-    return arrayElement;
+    return names.map(name =>
+        <div>
+            {`"${name}" składs się z ${name.length} znaków`}
+        </div>
+    );
 }
 
 export function Summary(props) {
