@@ -1,14 +1,25 @@
 import React from "react";
-// import { Message } from "./Message";
 import { Summary } from "./Summary";
+
+let names = ["Jacek","Ala", "Marek"];
 
 export default function App() {
     return (
-        <div>
-            <h1 className="bg-primary text-white text-center p-2">
-                Witaj Adminie!
-            </h1>
-            <Summary names={["Jarek", "Ala", "Marek"]} />
-        </div>
+        <table className="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>nr</th>
+                    <th>imię</th>
+                    <th>liczba liter</th>
+                </tr>
+            </thead>
+            <tbody>
+                {names.map((name, index) =>
+                    <tr key={name}>
+                        <Summary index={index} name={name} />
+                    </tr>
+                )}
+            </tbody>
+        </table>
     )
 }
