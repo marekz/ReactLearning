@@ -1,7 +1,13 @@
 import React from "react";
 import { Summary } from "./Summary";
+import ReactDOM from "react-dom";
 
 let names = ["Jacek","Ala", "Marek"];
+
+function reverseNames() {
+    names.reverse();
+    ReactDOM.render(<App />, document.getElementById('root'));
+}
 
 export default function App() {
     return (
@@ -16,7 +22,8 @@ export default function App() {
             <tbody>
                 {names.map((name, index) =>
                     <tr key={name}>
-                        <Summary index={index} name={name} />
+                        <Summary index={index} name={name}
+                            reverseCallback={reverseNames}/>
                     </tr>
                 )}
             </tbody>
