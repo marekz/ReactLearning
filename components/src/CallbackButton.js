@@ -5,6 +5,12 @@ export function CallbackButton(props) {
     let { theme, ...childProps } = props;
 
     return (
-        <SimpleButton {...childProps } className={`btn btn-${props.theme} btn-sm m-1`} />
+        <SimpleButton {...childProps }
+                      className={`btn btn-${props.theme} btn-sm m-1`} />
     )
+}
+
+CallbackButton.defaultProps = {
+    text: "Tekst domyślny",
+    theme: "warning"
 }

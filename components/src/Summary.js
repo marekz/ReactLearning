@@ -7,8 +7,7 @@ export function Summary(props) {
         <td>{props.name} </td>
         <td>{props.name.length} </td>
         <td>
-            <CallbackButton theme="primary"
-                text="Zmień kolejność"
+            <CallbackButton
                 callback={props.reverseCallback} />
             <CallbackButton theme="info"
                 text="Na początek"
