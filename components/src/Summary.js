@@ -11,7 +11,9 @@ export function Summary(props) {
                 callback={props.reverseCallback} />
             <CallbackButton theme="info"
                 text="Na początek"
-                callback={() => props.promoteCallback(props.name)} />
+                callback={() => props.promoteCallback(props.name)}
+                disabled={props.disabled === "true" || props.disabled === true}
+            />
         </td>
     </React.Fragment>
 }
