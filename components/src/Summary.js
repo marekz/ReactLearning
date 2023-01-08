@@ -10,6 +10,10 @@ export function Summary(props) {
                 onClick={props.reverseCallback}>
                 Zmień kolejność
             </button>
+            <button className="btn btn-info btn-sm m-1"
+                    onClick={() => props.promoteCallback(props.name)}>
+                Na początek
+            </button>
         </td>
     </React.Fragment>
 }
