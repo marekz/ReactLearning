@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 export class SimpleButton extends Component {
 
@@ -7,7 +6,6 @@ export class SimpleButton extends Component {
         super(props);
 
         this.state = {
-            counter: 0,
             hasButtonBeenClicked: false
         }
     }
@@ -17,7 +15,7 @@ export class SimpleButton extends Component {
                     className={ this.props.className }
                     disabled={ this.props.disabled === "true"
                         || this.props.disabled === true }>
-                { this.props.text } { this.state.counter }
+                { this.props.text } { this.props.counter }
                 { this.state.hasButtonBeenClicked &&
                     <div>Kliknięcie przycisku</div>
                 }
@@ -26,10 +24,7 @@ export class SimpleButton extends Component {
     }
 
     handleClick = () => {
-        for (let i = 0; i < 5; i++) {
-            this.setState((state, props) => {
-                return { counter: this.state.counter + 1 } });
-        }
+        this.props.incrementCallback(5);
         this.setState({ hasButtonBeenClicked: true });
         this.props.callback();
     }
