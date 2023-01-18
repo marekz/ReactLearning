@@ -7,7 +7,6 @@ export class SimpleButton extends Component {
         super(props);
 
         this.state = {
-            counter: 0,
             hasButtonBeenClicked: false
         }
     }
@@ -17,7 +16,7 @@ export class SimpleButton extends Component {
                     className={ this.props.className }
                     disabled={ this.props.disabled === "true"
                         || this.props.disabled === true }>
-                { this.props.text } { this.state.counter }
+                { this.props.text } { this.props.counter }
                 { this.state.hasButtonBeenClicked &&
                     <div>Kliknięcie przycisku</div>
                 }
@@ -26,10 +25,19 @@ export class SimpleButton extends Component {
     }
 
     handleClick = () => {
-        this.setState({
-            counter: this.state.counter + 1,
-            hasButtonBeenClicked: true
-        });
+        this.props.incrementCallback(5);
+        this.setState({ hasButtonBeenClicked: true });
         this.props.callback();
     }
+}
+
+SimpleButton.defaultProps = {
+    disabled: false
+}
+
+SimpleButton.propTypes = {
+    text: PropTypes.string,
+    teme: PropTypes.string,
+    callback: PropTypes.func,
+    disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 }
