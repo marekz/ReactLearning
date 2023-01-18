@@ -8,6 +8,10 @@ export default class App extends Component {
     }
   }
 
+  handleEvent() {
+    console.log("Wywołano metodę handleEvent");
+  }
+
   render() {
     return (
         <div className="m-2">
@@ -16,7 +20,7 @@ export default class App extends Component {
           </div>
           <div className="text-center">
             <button className="btn btn-primary"
-                    onClick={() => this.setState({ message: "Kliknięty!" })}
+                    onClick={ this.handleEvent }
             >Kliknij mnie!</button>
           </div>
         </div>
