@@ -9,7 +9,11 @@ export default class App extends Component {
   }
 
   handleEvent = (event) => {
-    this.setState({ message: `Zdarzenie ${event.type} ` });
+      if (event.type === "mousedown") {
+          this.setState({ message: "Przycisk myszy wciśnięty" });
+      } else {
+          this.setState({ message: "Przycisk myszy zwolniony" });
+      }
   }
 
   render() {
@@ -20,7 +24,8 @@ export default class App extends Component {
           </div>
           <div className="text-center">
             <button className="btn btn-primary"
-                    onClick={ this.handleEvent }
+                    onMouseDown={this.handleEvent}
+                    onMouseUp={this.handleEvent}
             >Kliknij mnie!</button>
           </div>
         </div>
