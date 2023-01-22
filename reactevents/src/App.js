@@ -8,9 +8,8 @@ export default class App extends Component {
     }
   }
 
-  handleEvent = () => {
-    console.log("Wywołano metodę handleEvent");
-    this.setState({ message: "Kliknięty!"} );
+  handleEvent = (event) => {
+    this.setState({ message: `Zdarzenie ${event.type} ` });
   }
 
   render() {
