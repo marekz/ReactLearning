@@ -6,7 +6,12 @@ export class ThemeButton extends Component {
             + `Target: ${event.target.tagName} `
             + `CurrentTarget: ${event.currentTarget.tagName} `);
         if (capturePhase) {
-            console.log("Pomijam wywołanie właściwości - faza przechwytywania...");
+            if (this.props.theme === "danger") {
+                event.stopPropagation();
+                console.log("Zdarzenie zostało zatrzymane!")
+            } else {
+                console.log("Pomijam wywołanie właściwości - faza przechwytywania...");
+            }
         } else if (event.bubbles && event.currentTarget !== event.target) {
             console.log("Pomijam wywołanie właściwości - faza propagacji w górę...");
         } else {
