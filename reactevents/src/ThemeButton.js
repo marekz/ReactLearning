@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 
 export class ThemeButton extends Component {
-    handleClick = (event) => {
+    handleClick = (event, capturePhase = false) => {
         console.log(`ThemeButton: Type: ${event.type} `
             + `Target: ${event.target.tagName} `
             + `CurrentTarget: ${event.currentTarget.tagName} `);
-        console.log("Wywołuję funkcyjną właściwość props...")
-        this.props.callback(this.props.theme);
+        if (capturePhase) {
+            console.log("Pomijam wywołanie właściwości - faza przechwytywania...");
+        } else if (event.bubbles && event.currentTarget !== event.target) {
+            console.log("Pomijam wywołanie właściwości - faza propagacji w górę...");
+        } else {
+            console.log("Wywołuję funkcyjną właściwość props...")
+            this.props.callback(this.props.theme);
+        }
     }
 
     render() {
         return <span className="m-1" onClick={this.handleClick}
-                     onClickCapture={this.handleClick}
-        >
+                     onClickCapture={ (e) => this.handleClick(e, true) } >
             <button className={`btn btn-${this.props.theme}`}
                     onClick={this.handleClick}>
                 Wybierz temat "{this.props.theme}"
