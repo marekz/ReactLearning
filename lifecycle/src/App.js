@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Message } from "./Message";
+import { List } from "./List";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0
+    }
+  }
+
+  incrementCounter = () => {
+    this.setState({ counter: this.state.counter + 1 });
+  }
+
+  render() {
+    console.log("Komponent App, metoda render.");
+    return <div className="container text-center">
+      <div className="row p-2">
+        <div className="col-6">
+          <Message message={ `Licznik: ${this.state.counter}` }
+                   text="Inkremetuj licznik" />
+        </div>
+        <div className="col-6">
+          <List />
+        </div>
+      </div>
     </div>
-  );
+  }
 }
-
-export default App;
