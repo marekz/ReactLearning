@@ -5,6 +5,7 @@ export class ThemeButton extends Component {
         console.log(`ThemeButton: Type: ${event.type} `
             + `Target: ${event.target.tagName} `
             + `CurrentTarget: ${event.currentTarget.tagName} `);
+        console.log("Wywołuję funkcyjną właściwość props...")
         this.props.callback(this.props.theme);
     }
 
