@@ -20,6 +20,7 @@ export default class App extends Component {
       <div className="row p-2">
         <div className="col-6">
           <Message message={ `Licznik: ${this.state.counter}` }
+                   callback={ this.incrementCounter }
                    text="Inkremetuj licznik" />
         </div>
         <div className="col-6">
