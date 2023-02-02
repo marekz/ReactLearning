@@ -30,6 +30,10 @@ export class Message extends Component {
         console.log("Komponent message, metoda componentDidUpdate");
     }
 
+    componentWillUnmount() {
+        console.log("Komponent Message, metoda componentWillUnmount");
+    }
+
     render() {
         console.log(`Komponent Message, metoda render.`);
         return (
