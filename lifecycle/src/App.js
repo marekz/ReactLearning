@@ -7,7 +7,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0
+      counter: 0,
+      showMessage: true
     }
   }
 
@@ -15,14 +16,26 @@ export default class App extends Component {
     this.setState({ counter: this.state.counter + 1 });
   }
 
+  handleChange = () => {
+    this.setState({ showMessage: !this.state.showMessage })
+  }
+
   render() {
     console.log("Komponent App, metoda render.");
     return <div className="container text-center">
       <div className="row p-2">
         <div className="col-4">
-          <Message message={ `Licznik: ${this.state.counter}` }
+          <div className="form-check">
+            <input type="checkbox" className="form-check-input"
+                   checked={this.state.showMessage}
+                   onChange={this.handleChange} />
+            <label className="form-check-label">Pokaż</label>
+          </div>
+          {this.state.showMessage &&
+            <Message message={ `Licznik: ${this.state.counter}` }
                    callback={ this.incrementCounter }
                    text="Inkremetuj licznik" />
+          }
         </div>
         <div className="col-4">
           <List />
