@@ -26,6 +26,10 @@ export class Message extends Component {
         console.log("Komponent Message, metoda componentDidMount.");
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("Komponent message, metoda componentDidUpdate");
+    }
+
     render() {
         console.log(`Komponent Message, metoda render.`);
         return (
