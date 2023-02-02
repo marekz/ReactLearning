@@ -22,6 +22,10 @@ export class Message extends Component {
         return this.state.showSpan ? <span>{div} </span> : div;
     }
 
+    componentDidMount() {
+        console.log("Komponent Message, metoda componentDidMount.");
+    }
+
     render() {
         console.log(`Komponent Message, metoda render.`);
         return (
