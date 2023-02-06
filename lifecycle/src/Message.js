@@ -34,6 +34,18 @@ export class Message extends Component {
         console.log("Komponent Message, metoda componentWillUnmount");
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        let change = nextProps.message !== this.props.message;
+        if (change) {
+            console.log(`shouldComponentUpdate ${this.props.text}: aktualizacja możliwa.`)
+        } else {
+            console.log(
+                `shouldComponentUpdate ${this.props.text}: aktualizacja niedozwolona.`
+            )
+        }
+        return change;
+    }
+
     render() {
         console.log(`Komponent Message, metoda render.`);
         return (
